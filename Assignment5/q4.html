@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Experience Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .experience-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .experience-row input {
+            margin-right: 10px;
+            padding: 5px;
+            flex: 1;
+        }
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Employee Experience Form</h2>
+
+    <form id="experience-form">
+        <div id="experience-container">
+            <div class="experience-row">
+                <input type="text" name="organization" placeholder="Organization" required>
+                <input type="text" name="designation" placeholder="Designation" required>
+                <input type="text" name="duration" placeholder="Duration (e.g. 2 years)" required>
+            </div>
+        </div>
+        <button type="button" id="add-more-btn">Add More</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Get the necessary DOM elements
+        const experienceContainer = document.getElementById('experience-container');
+        const addMoreButton = document.getElementById('add-more-btn');
+        const form = document.getElementById('experience-form');
+
+        // Add a new row of inputs when the "Add More" button is clicked
+        addMoreButton.addEventListener('click', () => {
+            const newRow = document.createElement('div');
+            newRow.classList.add('experience-row');
+            newRow.innerHTML = `
+                <input type="text" name="organization" placeholder="Organization" required>
+                <input type="text" name="designation" placeholder="Designation" required>
+                <input type="text" name="duration" placeholder="Duration (e.g. 2 years)" required>
+            `;
+            experienceContainer.appendChild(newRow);
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page refresh
+
+            const experienceRows = document.querySelectorAll('.experience-row');
+            const data = [];
+
+            // Collect data from each row
+            experienceRows.forEach(row => {
+                const organization = row.querySelector('input[name="organization"]').value;
+                const designation = row.querySelector('input[name="designation"]').value;
+                const duration = row.querySelector('input[name="duration"]').value;
+
+                // Add to the data array
+                data.push({
+                    organization,
+                    designation,
+                    duration
+                });
+            });
+
+            // Log the data in the console
+            console.log(data);
+        });
+    </script>
+
+</body>
+</html>

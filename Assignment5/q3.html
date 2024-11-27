@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="date"], input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .todo-list {
+            margin-top: 20px;
+        }
+        .todo-item {
+            padding: 10px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .todo-item div {
+            flex-grow: 1;
+        }
+        .todo-item button {
+            background-color: #f44336;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .todo-item button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>TODO List</h2>
+
+    <form id="todoForm">
+        <label for="task">Task</label>
+        <input type="text" id="task" name="task" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="submit">Add Task</button>
+    </form>
+
+    <div class="todo-list" id="todoList">
+        <!-- TODOs will appear here -->
+    </div>
+
+    <script>
+        // Get references to form and the todo list
+        const todoForm = document.getElementById('todoForm');
+        const todoList = document.getElementById('todoList');
+
+        // Listen for form submit event
+        todoForm.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form from refreshing the page
+
+            // Get input values
+            const task = document.getElementById('task').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // Create a new TODO item
+            const todoItem = document.createElement('div');
+            todoItem.classList.add('todo-item');
+
+            // Add task, date, and time to the TODO item
+            todoItem.innerHTML = `
+                <div>
+                    <strong>${task}</strong><br>
+                    <small>${date} at ${time}</small>
+                </div>
+                <button onclick="removeTodo(this)">Remove</button>
+            `;
+
+            // Append the new TODO item to the list
+            todoList.appendChild(todoItem);
+
+            // Clear the form inputs
+            todoForm.reset();
+        });
+
+        // Function to remove a TODO item
+        function removeTodo(button) {
+            const todoItem = button.parentElement;
+            todoList.removeChild(todoItem);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Data</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student data will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Create an array of 10 student objects
+        const students = [
+            { roll: 1, name: 'John Doe', mobile: '1234567890', email: 'john@example.com' },
+            { roll: 2, name: 'Jane Smith', mobile: '2345678901', email: 'jane@example.com' },
+            { roll: 3, name: 'Mike Johnson', mobile: '3456789012', email: 'mike@example.com' },
+            { roll: 4, name: 'Emma Brown', mobile: '4567890123', email: 'emma@example.com' },
+            { roll: 5, name: 'Chris Lee', mobile: '5678901234', email: 'chris@example.com' },
+            { roll: 6, name: 'Sarah White', mobile: '6789012345', email: 'sarah@example.com' },
+            { roll: 7, name: 'David Wilson', mobile: '7890123456', email: 'david@example.com' },
+            { roll: 8, name: 'Anna Davis', mobile: '8901234567', email: 'anna@example.com' },
+            { roll: 9, name: 'Tom Harris', mobile: '9012345678', email: 'tom@example.com' },
+            { roll: 10, name: 'Lucy Moore', mobile: '0123456789', email: 'lucy@example.com' }
+        ];
+
+        // Function to display student data in the table
+        function displayStudents() {
+            const tableBody = document.querySelector('#studentTable tbody');
+            students.forEach(student => {
+                const row = `
+                    <tr>
+                        <td>${student.roll}</td>
+                        <td>${student.name}</td>
+                        <td>${student.mobile}</td>
+                        <td>${student.email}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        // Call the function to display student data when the page loads
+        displayStudents();
+    </script>
+
+</body>
+</html>

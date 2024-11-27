@@ -1,0 +1,6 @@
+-AI Powered design solutions
+-Client Project Management Dashboard
+-3D Room Planner/Visualizer
+-Online Consultation and Booking System
+-Product Recommendations & E-Commerce Integration
+-Room & Budget Estimation Tool 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Div Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #color-box {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: lightgray;
+            border: 2px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Change the Color of the Box</h2>
+
+    <div id="color-box"></div>
+
+    <div id="button-container"></div>
+
+    <script>
+        // Array of color names
+        const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink"];
+
+        // Get the necessary DOM elements
+        const colorBox = document.getElementById('color-box');
+        const buttonContainer = document.getElementById('button-container');
+
+        // Function to create buttons dynamically
+        colors.forEach(color => {
+            const button = document.createElement('button');
+            button.textContent = color;
+            button.style.backgroundColor = color;
+            button.style.color = "white"; // Make text white for contrast
+            button.addEventListener('click', () => {
+                // Change the background color of the div when clicked
+                colorBox.style.backgroundColor = color;
+            });
+            buttonContainer.appendChild(button);
+        });
+    </script>
+
+</body>
+</html>
